@@ -22,9 +22,7 @@ export default function AccountDashboardPage() {
   const { enqueueSnackbar } = useSnackbar()
 
   const { data: subscriptions, isLoading: isLoadingSubscriptions } =
-    Api.billing.findManySubscriptions.useQuery({
-      include: { product: true, price: true },
-    })
+    Api.billing.findManySubscriptions.useQuery({})
   const { data: products, isLoading: isLoadingProducts } =
     Api.billing.findManyProducts.useQuery({})
   const { data: messageCampaigns, isLoading: isLoadingCampaigns } =
@@ -38,8 +36,8 @@ export default function AccountDashboardPage() {
 
   const handleUpgrade = async (productId: string) => {
     try {
-      const paymentLink = await createPaymentLink({ productId })
-      router.push(paymentLink)
+      const { url } = await createPaymentLink({ productId })
+      router.push(url)
     } catch (error) {
       enqueueSnackbar('Failed to create payment link', { variant: 'error' })
     }
@@ -122,21 +120,17 @@ export default function AccountDashboardPage() {
               <>
                 <p>
                   <strong>Current Plan:</strong>{' '}
-                  {subscriptions[0]?.product?.name || 'N/A'}
-                </p>
-                <p>
-                  <strong>Price:</strong> $
-                  {subscriptions[0]?.price?.unit_amount
-                    ? (subscriptions[0].price.unit_amount / 100).toFixed(2)
-                    : 'N/A'}
+                  {subscriptions[0]?.productId || 'N/A'}
                 </p>
                 <p>
                   <strong>Renewal Date:</strong>{' '}
-                  {subscriptions[0]?.currentPeriodEnd
-                    ? dayjs(subscriptions[0].currentPeriodEnd).format(
-                        'YYYY-MM-DD',
-                      )
+                  {subscriptions[0]?.dateExpired
+                    ? dayjs(subscriptions[0].dateExpired).format('YYYY-MM-DD')
                     : 'N/A'}
+                </p>
+                <p>
+                  <strong>Status:</strong>{' '}
+                  {subscriptions[0]?.status || 'N/A'}
                 </p>
               </>
             ) : (
@@ -155,7 +149,7 @@ export default function AccountDashboardPage() {
                 >
                   {subscriptions &&
                   subscriptions.length > 0 &&
-                  subscriptions[0]?.product?.name === product.name
+                  subscriptions[0]?.productId === product.id
                     ? 'Renew'
                     : `Upgrade to ${product.name}`}
                 </Button>
