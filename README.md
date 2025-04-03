@@ -1,64 +1,80 @@
-<div style="background: black;">
-<p align="center" style="margin: 0;">
-  <a href="https://dev.marblism.com" target="blank">
-    <img src="https://marblism-dashboard-api--production-public.s3.us-west-1.amazonaws.com/marblism-logo.png" height="150" alt="Marblism Logo" />
-  </a>
-</p>
-<h1 align="center" style="margin: 0;">In Marble We Trust</h1>
+# MsgService
 
-<a  style="margin: 0;" target="_blank" href="https://marblism.com">
-<p align="center" style="margin: 0; letter-spacing: 3px;
-text-decoration: none;">
-marblism
-</p>
-</a>
-</div>
-<div style="height: 50px; background: linear-gradient(#000000, transparent);"></div>
+MsgService is a TypeScript-based messaging service designed to facilitate seamless communication between systems. This repository contains the core functionality and implementation details for the service.
 
-## Documentation
+## Table of Contents
 
-Learn more in the [official documentation](https://dev.marblism.com).
+- [Installation](#installation)
+- [Usage](#usage)
+- [Development](#development)
+- [Production](#production)
+- [Support](#support)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Installation
 
-<div style="color: red;">
+To get started with MsgService, ensure you have the following prerequisites installed:
 
-> ⚠️ **Important**<br/>Make sure the following tools are installed on your computer
+- [Docker Desktop](https://www.docker.com/get-started/)
+- [Node.js](https://nodejs.org/en) (version 20.11.0 or higher)
+- [npm](https://www.npmjs.com/) (version 10.2.4 or higher)
+- [pnpm](https://pnpm.io/) package manager
 
-<p align="center">
-
-<a target="_blank" href="https://www.docker.com/get-started/">![Docker Desktop Version](https://img.shields.io/badge/Docker%20Desktop-4.19.0-black?logo=docker)</a>
-<a target="_blank" href="https://nodejs.org/en">![Node.js version](https://img.shields.io/badge/Node.js-20.11.0-black?logo=nodedotjs)</a>
-<a target="_blank" href="https://www.npmjs.com/">![npm Version](https://img.shields.io/badge/npm-10.2.4-black?logo=npm)</a>
-
-</p>
-</div>
-
-<br />
+Then, clone the repository and initialize the project:
 
 ```bash
-$ pnpm run init
+git clone https://github.com/OneSAHDEVSINH/msgservice.git
+cd msgservice
+pnpm run init
 ```
+
+## Usage
+
+To run the application in development mode:
+
+```bash
+pnpm run dev
+```
+
+Open your browser and navigate to [http://localhost:8099](http://localhost:8099) to view the application.
 
 ## Development
 
-```bash
-$ pnpm run dev
-```
+For development, follow these steps:
 
-[View your application in your browser](http://localhost:8099)
+1. Start the development server:
+
+    ```bash
+    pnpm run dev
+    ```
+
+2. Make your changes and test them locally.
 
 ## Production
 
+To build and start the application for production:
+
 ```bash
-$ pnpm run build
-$ pnpm run start
+pnpm run build
+pnpm run start
 ```
 
 ## Support
 
-We reply FAST on our <a target="_blank" href="https://discord.gg/GScNz7kAEu">Discord server</a>.
+If you need help or have any questions, feel free to open an issue in this repository.
 
-## Stay in touch
+## Contributing
 
-[@marblismAI](https://twitter.com/marblismAI)
+We welcome contributions to MsgService! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add new feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
